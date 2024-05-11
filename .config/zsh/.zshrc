@@ -77,8 +77,6 @@ alias la="ls -la --color=auto"
 
 alias nv="nvim"
 alias lg='lazygit'
-alias dlg="lazygit --git-dir \$DOTFILES_DIR --work-tree \$DOTFILES_TREE"
-alias cfg="/usr/bin/git --git-dir \$DOTFILES_DIR --work-tree \$DOTFILES_TREE"
 alias d2ux='find . -type f -print0 | xargs -0 dos2unix'
 
 alias python='python3'

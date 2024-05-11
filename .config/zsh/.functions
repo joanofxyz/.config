@@ -81,6 +81,17 @@ function alert() {
 
 
 
+function cfg() {
+  repo="$1"
+  if ! vcsh list | grep -xq "$repo"; then
+    echo "usage: cfg <repo>"
+    return 2
+  fi
+  lazygit --git-dir "$HOME/.config/vcsh/repo.d/$repo.git/"
+}
+
+
+
 # # this is a template that should be setup in ~/.config/zsh/.secrets
 # _dbq_env() {
 #   if [[ "$#" -ne 1 || ("$1" != "dev" && "$1" != "stg" && "$1" != "prd") ]]; then
