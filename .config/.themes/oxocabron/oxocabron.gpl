@@ -1,0 +1,24 @@
+GIMP Palette
+Name: oxocabron
+Columns: 2
+#
+118  87  97	soft red
+122  67  86	red
+117 108  91	soft yellow
+122 103  67	yellow
+ 99 117  91	soft green
+ 86 122  67	green
+ 91 117 108	soft aqua
+ 67 122 103	aqua
+ 91  99 117	soft blue
+ 67  86 122	blue
+108  91 117	soft purple
+103  67 122	purple
+ 48  48  48	black
+ 54  54  54	darkest gray
+ 64  64  64	darker gray
+ 76  76  76	dark gray
+135 135 135	light gray
+147 147 147	lighter gray
+161 161 161	lightest gray
+177 177 177	white

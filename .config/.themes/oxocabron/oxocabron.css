@@ -1,0 +1,68 @@
+.hsl {
+  .softred { color: hsl(341, 15, 40); }
+  .red { color: hsl(339, 29, 37); }
+  .softgreen { color: hsl(102, 12, 41); }
+  .green { color: hsl(99, 29, 37); }
+  .softyellow { color: hsl(39, 12, 41); }
+  .yellow { color: hsl(39, 29, 37); }
+  .softblue { color: hsl(222, 12, 41); }
+  .blue { color: hsl(219, 29, 37); }
+  .softpurple { color: hsl(279, 12, 41); }
+  .purple { color: hsl(279, 29, 37); }
+  .softaqua { color: hsl(159, 12, 41); }
+  .aqua { color: hsl(159, 29, 37); }
+  .white { color: hsl(0, 0, 69); }
+  .lightestgray { color: hsl(0, 0, 63); }
+  .lightergray { color: hsl(0, 0, 58); }
+  .lightgray { color: hsl(0, 0, 53); }
+  .darkgray { color: hsl(0, 0, 30); }
+  .darkergray { color: hsl(0, 0, 25); }
+  .darkestgray { color: hsl(0, 0, 21); }
+  .black { color: hsl(0, 0, 19); }
+}
+
+.hex {
+  .softred { color: #765761; }
+  .red { color: #7a4356; }
+  .softgreen { color: #63755b; }
+  .green { color: #567a43; }
+  .softyellow { color: #756c5b; }
+  .yellow { color: #7a6743; }
+  .softblue { color: #5b6375; }
+  .blue { color: #43567a; }
+  .softpurple { color: #6c5b75; }
+  .purple { color: #67437a; }
+  .softaqua { color: #5b756c; }
+  .aqua { color: #437a67; }
+  .white { color: #b1b1b1; }
+  .lightestgray { color: #a1a1a1; }
+  .lightergray { color: #939393; }
+  .lightgray { color: #878787; }
+  .darkgray { color: #4c4c4c; }
+  .darkergray { color: #404040; }
+  .darkestgray { color: #363636; }
+  .black { color: #303030; }
+}
+
+.rgb {
+  .softred { color: rgb(118, 87, 97); }
+  .red { color: rgb(122, 67, 86); }
+  .softgreen { color: rgb(99, 117, 91); }
+  .green { color: rgb(86, 122, 67); }
+  .softyellow { color: rgb(117, 108, 91); }
+  .yellow { color: rgb(122, 103, 67); }
+  .softblue { color: rgb(91, 99, 117); }
+  .blue { color: rgb(67, 86, 122); }
+  .softpurple { color: rgb(108, 91, 117); }
+  .purple { color: rgb(103, 67, 122); }
+  .softaqua { color: rgb(91, 117, 108); }
+  .aqua { color: rgb(67, 122, 103); }
+  .white { color: rgb(177, 177, 177); }
+  .lightestgray { color: rgb(161, 161, 161); }
+  .lightergray { color: rgb(147, 147, 147); }
+  .lightgray { color: rgb(135, 135, 135); }
+  .darkgray { color: rgb(76, 76, 76); }
+  .darkergray { color: rgb(64, 64, 64); }
+  .darkestgray { color: rgb(54, 54, 54); }
+  .black { color: rgb(48, 48, 48); }
+}
