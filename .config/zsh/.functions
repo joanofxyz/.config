@@ -1,0 +1,104 @@
+#!/bin/bash
+
+function cache_ssh_key() {
+  ssh-add ~/.ssh/id_rsa
+  ssh-add
+}
+
+
+
+function nf() {
+  if [[ $# -eq 0 ]]; then
+    echo "usage: nf <program name> [...program arguments]"
+    return 2
+  fi
+  time "$@"
+  exit_code=$?
+  ntfy publish --config ~/.config/ntfy/client.yml --title "/$1" "$1" "finished running with exit code: $exit_code"
+  ntfy publish --config ~/.config/ntfy/client.yml --title "/all" "all" "$1 finished running with exit code: $exit_code"
+  return $exit_code
+}
+
+
+
+function gwa() {
+  lang=
+  while getopts "l:" opt; do
+    case "$opt" in
+      l) lang="$OPTARG" ;;
+      *) echo "invalid option"; return 2 ;;
+    esac
+  done
+  branch=${*:$OPTIND:1}
+  if [[ ! $branch || "${*:$OPTIND+1:1}" ]]; then
+    echo "usage: gwa <branch name>"
+    return 2
+  fi
+  directory="../${PWD##*/}-$branch"
+  git worktree add "-b" "feature/$branch" "$directory"
+  exit_code=$?
+  if (( exit_code )); then
+    return $exit_code
+  fi
+  cd "$directory" || return $?
+  if [[ $lang == "python" ]]; then
+    python -m venv venv && source venv/bin/activate && pip install -r "requirements.txt"
+  fi
+}
+
+
+
+function pcf() {
+  if [[ $# -ne 1 ]]; then
+    echo "usage: pcf <program name>"
+    return 2
+  fi
+  pid=$(pgrep -f "$1")
+  exit_code=$?
+  if (( exit_code )); then
+    echo "couldn't find '$1' running"
+    return $exit_code
+  fi
+  echo "caffeinating '$1' (pid=$pid)"
+  caffeinate -dims -w "$pid"
+  echo "'$1' finished running"
+}
+
+
+
+function alert() {
+  if [[ $# -eq 0 ]]; then
+    echo "usage: alert <program name> [...program arguments]"
+    return 2
+  fi
+  time "$@"
+  exit_code=$?
+  sound=$( (( exit_code )) && echo "Sosumi" || echo "Funk")
+  notification="display notification \"$1 finished running\" with title \"$1\" sound name \"$sound\""
+  osascript -e "$notification"
+  return $exit_code
+}
+
+
+
+# # this is a template that should be setup in ~/.config/zsh/.secrets
+# _dbq_env() {
+#   if [[ "$#" -ne 1 || ("$1" != "dev" && "$1" != "stg" && "$1" != "prd") ]]; then
+#     echo "usage: dbq_env <dev | stg | prd>"
+#     return 2
+#   fi
+#
+#   DB_USERNAME=
+#   declare -A DBQ_PASSWORDS
+#   DBQ_PASSWORDS=(
+#     ["dev"]=""
+#     ["stg"]=""
+#     ["prd"]=""
+#   )
+#
+#   DBQ_ENV="$1"
+#   DBQ_PASSWORD=${DBQ_PASSWORDS[$DBQ_ENV]}
+#   export DBQ_DATABASES=""
+#   DBQ_DATABASES="redis=redis://localhost:6379 $DBQ_DATABASES"
+#   DBQ_DATABASES="some_database=jdbc:mysql://$DB_USERNAME:$DBQ_PASSWORD@127.0.0.1:1080 $DBQ_DATABASES"
+# }
