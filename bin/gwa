@@ -1,0 +1,23 @@
+#!/bin/bash
+lang=
+while getopts "l:" opt; do
+  case "$opt" in
+    l) lang="$OPTARG" ;;
+    *) echo "invalid option"; return 2 ;;
+  esac
+done
+branch=${*:$OPTIND:1}
+if [[ ! $branch || "${*:$OPTIND+1:1}" ]]; then
+  echo "usage: gwa <branch name>"
+  return 2
+fi
+directory="../${PWD##*/}-$branch"
+git worktree add "-b" "feature/$branch" "$directory"
+exit_code=$?
+if (( exit_code )); then
+  return $exit_code
+fi
+cd "$directory" || return $?
+if [[ $lang == "python" ]]; then
+  python -m venv venv && source venv/bin/activate && pip install -r "requirements.txt"
+fi

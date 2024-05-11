@@ -1,0 +1,7 @@
+#!/bin/bash
+repo="$1"
+if ! vcsh list | grep -xq "$repo"; then
+  echo "usage: cfg <repo>"
+  return 2
+fi
+lazygit --git-dir "$HOME/.config/vcsh/repo.d/$repo.git/"
