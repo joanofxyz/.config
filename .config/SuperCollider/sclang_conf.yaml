@@ -1,0 +1,8 @@
+includePaths:
+    -   /home/joan/.local/share/SuperCollider/downloaded-quarks/Vowel
+    -   /home/joan/.local/share/SuperCollider/downloaded-quarks/Dirt-Samples
+    -   /home/joan/.local/share/SuperCollider/downloaded-quarks/SuperDirt
+excludePaths:
+    []
+postInlineWarnings: false
+excludeDefaultPaths: false
