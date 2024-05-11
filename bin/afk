@@ -1,0 +1,14 @@
+#!/bin/bash
+sleep 3 # need time to click away so you can't just CTRL+C out of it
+
+prev_idle=0
+while true; do
+  r=$(ioreg -w 0 -c IOHIDSystem | sed -e '/HIDIdleTime/ !{ d' -e 't' -e '}' -e 's/.* = //g' -e 'q')
+  idle=$(( r / 1000000 ))
+  if [ "$idle" -lt $prev_idle ]; then
+    break
+  fi
+	prev_idle=$idle
+  sleep 1
+done
+pmset displaysleepnow

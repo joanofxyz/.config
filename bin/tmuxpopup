@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if (( $(pgrep -f "bash.*tmuxpopup" | wc -l) > 2 )); then
+  echo "tmuxpopup already running"
+  exit 2
+fi
+
+TIMEOUT=1200
+
+sleep $TIMEOUT
+while true; do
+  KEY="$(shuf -n 1 /usr/share/dict/words)"
+  tmux popup \
+    -h 3 -w $(( 28 + ${#KEY} * 2 )) -BE \
+    -s "fg=white bold,bg=green" \
+    "
+	while [ \"\$p\" != \"$KEY\" ]; do
+		clear
+		echo \"\"
+		read -rp \"  look away, then type $KEY: \" p
+  done" && sleep $TIMEOUT # we could do ` || exit 2` to allow CTRL+C to exit, but we don't want that
+done
