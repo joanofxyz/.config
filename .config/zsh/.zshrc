@@ -85,6 +85,7 @@ alias pip='pip3'
 alias cf="caffeinate -dims"
 alias laj="tmuxpopup &!"
 alias ldj='pkill -f "bash.*tmuxpopup|sleep 10"'
+alias pfw="picofeed ~/feeds.txt --web &> /dev/null"
 
 alias wfuzz="docker run --rm -it -v $(pwd)/wordlist:/wordlist/ ghcr.io/xmendez/wfuzz wfuzz"
 alias hydra="docker run --rm -it docker.io/vanhauser/hydra"
