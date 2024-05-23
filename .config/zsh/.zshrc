@@ -109,10 +109,22 @@ zinit cdreplay -q
 
 
 ################################################################################
+# colorscheme ##################################################################
+autoload -Uz colors && colors
+export FZF_DEFAULT_OPTS='--color=fg:-1,bg:-1,hl:#52665f
+--color=fg+:#ababab,bg+:#303030,hl+:#3d6658
+--color=info:#665f52,prompt:#663d4b,pointer:#5f5266
+--color=marker:#4b663d,spinner:#665258,header:#525866
+--color=preview-fg:#ababab,preview-bg:#262626'
+################################################################################
+
+
+
+################################################################################
 # plugins ######################################################################
 zstyle ':fzf-tab:*' switch-group ',' '.'
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':fzf-tab:*' fzf-flags $(echo $FZF_DEFAULT_OPTS)
+zstyle ':fzf-tab:*' default-color $'\033[38;5;245m'
 
 zinit lucid wait for "Aloxaf/fzf-tab"
 zinit lucid wait for "zsh-users/zsh-autosuggestions"
@@ -121,18 +133,6 @@ zinit lucid wait for "zdharma-continuum/fast-syntax-highlighting"
 zinit light "jeffreytse/zsh-vi-mode"
 
 export ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
-################################################################################
-
-
-
-################################################################################
-# colorscheme ##################################################################
-autoload -Uz colors && colors
-export FZF_DEFAULT_OPTS='--color=fg:-1,bg:-1,hl:#52665f
---color=fg+:#ababab,bg+:#303030,hl+:#3d6658
---color=info:#665f52,prompt:#663d4b,pointer:#5f5266
---color=marker:#4b663d,spinner:#665258,header:#525866
---color=preview-fg:#ababab,preview-bg:#262626'
 ################################################################################
 
 
